@@ -39,26 +39,6 @@
       background-size: cover;
       cursor: pointer;
     }
-    .open-btn {
-      margin-bottom: 75px;
-      background: linear-gradient(135deg, #f3deb3, #dfc08a, #c5a059);
-      color: #081225;
-      font-family: 'Cinzel', serif;
-      font-weight: 800;
-      font-size: 13px;
-      letter-spacing: 2px;
-      border: 1px solid #dfc08a;
-      padding: 14px 28px;
-      border-radius: 30px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
-      cursor: pointer;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
 
     /* PANTALLA 2: CONTENIDO */
     #screen-content {
@@ -452,11 +432,8 @@
 
 <div class="mobile-container">
   
-  <!-- PANTALLA 1: PORTADA CON ANCHO COMPLETO Y BOTÓN POSICIONADO -->
-  <div id="screen-envelope" onclick="openInvitation()">
-    <div class="cover-spacer"></div>
-    <button class="open-btn">ABRIR INVITACIÓN</button>
-  </div>
+  <!-- PANTALLA 1: PORTADA TAL CUAL TU ARCHIVO (SIN BOTÓN) -->
+  <div id="screen-envelope" onclick="openInvitation()"></div>
 
   <!-- PANTALLA 2: CONTENIDO -->
   <div id="screen-content">
@@ -601,7 +578,7 @@
 </div>
 
 <script>
-  // PEGA AQUÍ TU URL EXACTA DE APPS SCRIPT:
+  // URL EXACTA DE TU APPS SCRIPT:
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyYUA73oj2Gbys0Z0bAwVYUKxxQ9Oc7r2EYTwR53W4hw7rCkybHjhPjQFiBQEfq4WXNsQ/exec";
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -617,6 +594,7 @@
   function openInvitation() {
     document.getElementById('screen-envelope').style.display = 'none';
     document.getElementById('screen-content').style.display = 'block';
+    window.scrollTo(0, 0);
   }
 
   // --- CUENTA REGRESIVA AL 16 DE ENERO DE 2027 A LAS 7:00 PM ---
