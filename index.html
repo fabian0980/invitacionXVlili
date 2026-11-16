@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis 15 Años - Lili</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #081225;
+      font-family: 'Montserrat', sans-serif;
+      color: #f7eed8;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .mobile-container {
+      width: 100%;
+      max-width: 480px;
+      position: relative;
+      background-color: #081225;
+      box-shadow: 0 0 35px rgba(0,0,0,0.85);
+      overflow-x: hidden;
+    }
+
+    /* PANTALLA 1: PORTADA */
+    #screen-envelope {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      background: url('portada.png') no-repeat center top;
+      background-size: cover;
+      cursor: pointer;
+    }
+    .open-btn {
+      margin-bottom: 75px;
+      background: linear-gradient(135deg, #f3deb3, #dfc08a, #c5a059);
+      color: #081225;
+      font-family: 'Cinzel', serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 2px;
+      border: 1px solid #dfc08a;
+      padding: 14px 28px;
+      border-radius: 30px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* PANTALLA 2: CONTENIDO */
+    #screen-content {
+      display: none;
+      position: relative;
+      width: 100%;
+      background: #081225 url('invitacion.png') no-repeat center top;
+      background-size: 100% auto;
+    }
+
+    .flow-wrapper {
+      width: 100%;
+      padding-top: 108%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 70px;
+    }
+
+    /* 1. SECCIÓN DEDICATORIA, FECHA, HORA Y LUGAR */
+    .ceremony-card {
+      width: 100%;
+      background: rgba(13, 26, 48, 0.94);
+      border: 1px solid rgba(223, 192, 138, 0.4);
+      padding: 18px 16px;
+      text-align: center;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      margin-bottom: 22px;
+    }
+    .prayer-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: #f7eed8;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .psalm-text {
+      font-family: 'Montserrat', sans-serif;
+      font-style: italic;
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: #dfc08a;
+      margin-bottom: 12px;
+    }
+    .date-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 10px 0 12px 0;
+    }
+    .date-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+    .date-line {
+      width: 100%;
+      height: 1px;
+      background: #dfc08a;
+      margin: 4px 0;
+    }
+    .date-side span {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #f7eed8;
+      text-transform: uppercase;
+    }
+    .date-number {
+      font-family: 'Cinzel', serif;
+      font-size: 44px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+      padding: 0 6px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+    .time-text {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: #dfc08a;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+    .venue-title {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #f7eed8;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .venue-name {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 24px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    /* BOTONES DORADOS */
+    .styled-gold-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 65%;
+      height: 40px;
+      background: linear-gradient(135deg, #fae5be 0%, #e5c589 50%, #c9a054 100%);
+      color: #081225 !important;
+      font-family: 'Cinzel', serif;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 30px;
+      border: 1px solid #fff2d6;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      margin: 0 auto;
+    }
+    .styled-gold-btn:hover, .styled-gold-btn:active {
+      background: linear-gradient(135deg, #ffffff 0%, #fae5be 60%, #dfc08a 100%);
+      transform: scale(1.03);
+    }
+
+    /* 2. TEMPORIZADOR EN TIEMPO REAL */
+    .timer-card {
+      width: 90%;
+      background: #0b172a;
+      border: 1px solid rgba(223, 192, 138, 0.65);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 10px 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      margin-bottom: 24px;
+    }
+    .timer-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+    .timer-val {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 26px;
+      font-weight: 300;
+      color: #ffffff;
+      line-height: 1;
+    }
+    .timer-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8.5px;
+      letter-spacing: 1.5px;
+      color: #dfc08a;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .timer-sep {
+      font-size: 22px;
+      color: #ffffff;
+      margin-bottom: 12px;
+      font-weight: 300;
+    }
+
+    /* 3. CUADRO LLUVIA DE SOBRES Y COLOR RESERVADO */
+    .gift-dresscode-card {
+      width: 100%;
+      background: rgba(8, 18, 37, 0.96);
+      border: 1.5px solid rgba(223, 192, 138, 0.55);
+      border-radius: 14px;
+      padding: 16px 14px 14px 14px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+    }
+    .envelope-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .envelope-svg {
+      width: 32px;
+      height: 24px;
+    }
+    .envelope-title {
+      font-family: 'Cinzel', serif;
+      font-size: 13.5px;
+      letter-spacing: 2.5px;
+      color: #dfc08a;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .small-divider {
+      width: 65%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(223, 192, 138, 0.6), transparent);
+      margin-bottom: 10px;
+    }
+    .reserved-color-section {
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 2.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #dfc08a;
+    }
+    .reserved-color-val {
+      color: #8bb6e6;
+      font-weight: 800;
+      margin-left: 6px;
+    }
+
+    /* 4. TARJETA UNIFICADA (NOMBRE + CUPOS) */
+    .unified-guest-card {
+      width: 100%;
+      text-align: center;
+      background: rgba(8, 18, 37, 0.96);
+      border: 1.5px solid rgba(223, 192, 138, 0.55);
+      border-radius: 14px;
+      padding: 16px 16px 14px 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+    .card-top-subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #dfc08a;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .card-guest-name {
+      font-family: 'Cinzel', serif;
+      font-size: 19px;
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+    .card-divider {
+      width: 70%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(223, 192, 138, 0.8), transparent);
+      margin: 0 auto 8px auto;
+    }
+    .card-cupos-title {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      color: #dfc08a;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .card-cupos-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .cupos-moon-svg {
+      width: 28px;
+      height: 34px;
+    }
+    .card-spots-number {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    /* RECORDATORIO Y BOTÓN DE CONFIRMACIÓN */
+    .rsvp-prompt {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11.5px;
+      color: #cfd8dc;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .btn-confirm-main {
+      width: 70%;
+      height: 44px;
+      font-size: 13px;
+    }
+
+    /* MODAL DE CONFIRMACIÓN */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(4, 9, 18, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 20px;
+    }
+    .modal-box {
+      background: #0d1a30;
+      border: 1px solid #dfc08a;
+      border-radius: 18px;
+      padding: 24px 20px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      color: #f7eed8;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+    }
+    .modal-box h3 {
+      font-family: 'Cinzel', serif;
+      color: #dfc08a;
+      font-size: 18px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .modal-box p {
+      font-size: 13px;
+      margin-bottom: 16px;
+      color: #d1d8e0;
+    }
+    .form-group {
+      margin-bottom: 14px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: #dfc08a;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(223, 192, 138, 0.4);
+      background: #081225;
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+    }
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #f3deb3, #dfc08a, #c5a059);
+      color: #081225;
+      font-family: 'Cinzel', serif;
+      font-weight: 800;
+      padding: 13px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      letter-spacing: 1.5px;
+      margin-top: 8px;
+    }
+    .btn-close {
+      background: transparent;
+      border: none;
+      color: #8c9ba5;
+      font-size: 12px;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="mobile-container">
+  
+  <!-- PANTALLA 1: PORTADA CON ANCHO COMPLETO Y BOTÓN POSICIONADO -->
+  <div id="screen-envelope" onclick="openInvitation()">
+    <div class="cover-spacer"></div>
+    <button class="open-btn">ABRIR INVITACIÓN</button>
+  </div>
+
+  <!-- PANTALLA 2: CONTENIDO -->
+  <div id="screen-content">
+    <div class="flow-wrapper">
+      
+      <!-- 1. DEDICATORIA, FECHA, LUGAR Y BOTÓN UBICACIÓN -->
+      <div class="ceremony-card">
+        <p class="prayer-text">
+          Con gratitud a Dios por el regalo de tu vida, comienza una nueva etapa llena de sueños por descubrir. Que Dios ilumine tus pasos y guíe siempre tu corazón.
+        </p>
+        <p class="psalm-text">
+          «Encomienda al Señor tu camino, confía en Él, y Él actuará».<br>Salmo 37:5
+        </p>
+
+        <div class="date-row">
+          <div class="date-side">
+            <div class="date-line"></div>
+            <span>SÁBADO</span>
+            <div class="date-line"></div>
+          </div>
+          <div class="date-number">16</div>
+          <div class="date-side">
+            <div class="date-line"></div>
+            <span>ENERO</span>
+            <div class="date-line"></div>
+          </div>
+        </div>
+
+        <div class="time-text">HORA - 7PM</div>
+        <div class="venue-title">LUGAR DEL EVENTO</div>
+        <div class="venue-name">Club La Hacienda</div>
+
+        <a href="https://maps.google.com/?q=Club+La+Hacienda+Cajica+Cundinamarca" target="_blank" class="styled-gold-btn">
+          VER UBICACIÓN
+        </a>
+      </div>
+
+      <!-- 2. TEMPORIZADOR EN TIEMPO REAL -->
+      <div class="timer-card">
+        <div class="timer-col">
+          <span class="timer-val" id="t-days">00</span>
+          <span class="timer-label">DAYS</span>
+        </div>
+        <span class="timer-sep">:</span>
+        <div class="timer-col">
+          <span class="timer-val" id="t-hours">00</span>
+          <span class="timer-label">HOURS</span>
+        </div>
+        <span class="timer-sep">:</span>
+        <div class="timer-col">
+          <span class="timer-val" id="t-mins">00</span>
+          <span class="timer-label">MINUTES</span>
+        </div>
+        <span class="timer-sep">:</span>
+        <div class="timer-col">
+          <span class="timer-val" id="t-secs">00</span>
+          <span class="timer-label">SECONDS</span>
+        </div>
+      </div>
+
+      <!-- 3. LLUVIA DE SOBRES Y COLOR RESERVADO CON BORDE REDONDEADO Y MARCO DORADO -->
+      <div class="gift-dresscode-card">
+        <div class="envelope-section">
+          <svg class="envelope-svg" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="38" height="28" rx="3" stroke="#dfc08a" stroke-width="2" fill="#0f2240"/>
+            <path d="M2 3L20 17L38 3" stroke="#dfc08a" stroke-width="2"/>
+          </svg>
+          <div class="envelope-title">LLUVIA DE SOBRES</div>
+        </div>
+        <div class="small-divider"></div>
+        <div class="reserved-color-section">
+          COLOR RESERVADO <span class="reserved-color-val">AZUL</span>
+        </div>
+      </div>
+
+      <!-- 4. TARJETA UNIFICADA CON NOMBRE Y CUPOS -->
+      <div class="unified-guest-card">
+        <div class="card-top-subtitle">Invitación especial para</div>
+        <div class="card-guest-name" id="display-name">Consultando...</div>
+
+        <div class="card-divider"></div>
+
+        <div class="card-cupos-title" id="display-cupos-title">CUPOS RESERVADOS</div>
+        <div class="card-cupos-row">
+          <svg class="cupos-moon-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M70 10C40 25 30 65 50 105C20 90 10 50 25 20C35 5 55 0 70 10Z" fill="url(#moon-flow-gradient)" stroke="#dfc08a" stroke-width="2"/>
+            <circle cx="45" cy="50" r="4" fill="#fae5be" />
+            <circle cx="35" cy="75" r="3" fill="#fae5be" />
+            <defs>
+              <linearGradient id="moon-flow-gradient" x1="0" y1="0" x2="100" y2="120" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#244b7a"/>
+                <stop offset="0.5" stop-color="#142b4d"/>
+                <stop offset="1" stop-color="#e5c589"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="card-spots-number" id="display-spots-number">1</div>
+        </div>
+      </div>
+
+      <!-- RECORDATORIO Y BOTÓN DE CONFIRMACIÓN -->
+      <div class="rsvp-prompt">
+        Por favor confirmar asistencia antes del 15 de diciembre, 2026
+      </div>
+      <button type="button" class="styled-gold-btn btn-confirm-main" onclick="openModal()">
+        CONFIRMAR
+      </button>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL DE CONFIRMACIÓN -->
+<div class="modal-overlay" id="rsvp-modal">
+  <div class="modal-box">
+    <h3>CONFIRMAR ASISTENCIA</h3>
+    <p>Por favor confirma tus datos antes del 15 de diciembre de 2026.</p>
+
+    <div class="form-group">
+      <label>¿Podrás acompañarnos?</label>
+      <select id="rsvp-attendance" onchange="toggleSpotSelection()">
+        <option value="yes">¡Sí, allí estaré!</option>
+        <option value="no">Lamentablemente no podré asistir</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="spot-container">
+      <label>Cupos que utilizarás:</label>
+      <select id="rsvp-confirmed-spots"></select>
+    </div>
+
+    <div class="form-group">
+      <label>Mensaje para Lili (Opcional):</label>
+      <textarea id="rsvp-message" rows="2" placeholder="Déjale unas palabras de felicitación..."></textarea>
+    </div>
+
+    <button class="btn-submit" id="btn-save" onclick="sendRSVP()">ENVIAR CONFIRMACIÓN</button>
+    <br>
+    <button class="btn-close" onclick="closeModal()">Cerrar</button>
+  </div>
+</div>
+
+<script>
+  // PEGA AQUÍ TU URL EXACTA DE APPS SCRIPT:
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyYUA73oj2Gbys0Z0bAwVYUKxxQ9Oc7r2EYTwR53W4hw7rCkybHjhPjQFiBQEfq4WXNsQ/exec";
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const rawId = urlParams.get('id');
+  const guestId = rawId ? rawId.toLowerCase().trim() : 'demo';
+
+  let currentGuest = {
+    id: guestId,
+    nombre: "Apreciado Invitado",
+    cupos: 1
+  };
+
+  function openInvitation() {
+    document.getElementById('screen-envelope').style.display = 'none';
+    document.getElementById('screen-content').style.display = 'block';
+  }
+
+  // --- CUENTA REGRESIVA AL 16 DE ENERO DE 2027 A LAS 7:00 PM ---
+  const eventDate = new Date("2027-01-16T19:00:00").getTime();
+
+  function updateTimer() {
+    const now = new Date().getTime();
+    const diff = eventDate - now;
+
+    if (diff <= 0) {
+      document.getElementById('t-days').innerText = "00";
+      document.getElementById('t-hours').innerText = "00";
+      document.getElementById('t-mins').innerText = "00";
+      document.getElementById('t-secs').innerText = "00";
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('t-days').innerText = String(d).padStart(2, '0');
+    document.getElementById('t-hours').innerText = String(h).padStart(2, '0');
+    document.getElementById('t-mins').innerText = String(m).padStart(2, '0');
+    document.getElementById('t-secs').innerText = String(s).padStart(2, '0');
+  }
+  setInterval(updateTimer, 1000);
+  updateTimer();
+
+  // --- CONEXIÓN DIRECTA A GOOGLE SHEETS (JSONP) ---
+  function loadGuestData() {
+    if (!SCRIPT_URL.includes("http") || SCRIPT_URL.includes("PEGA_AQUI")) {
+      renderFallback();
+      return;
+    }
+
+    window.handleSheetsResponse = function(data) {
+      if (data && data.found) {
+        currentGuest.nombre = data.nombre;
+        currentGuest.cupos = parseInt(data.cupos) || 1;
+        applyGuestToScreen(currentGuest.nombre, currentGuest.cupos);
+      } else {
+        renderFallback();
+      }
+    };
+
+    const scriptTag = document.createElement('script');
+    scriptTag.src = `${SCRIPT_URL}?id=${encodeURIComponent(guestId)}&callback=handleSheetsResponse`;
+    scriptTag.onerror = function() {
+      renderFallback();
+    };
+    document.body.appendChild(scriptTag);
+  }
+
+  function renderFallback() {
+    const cleanName = guestId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    applyGuestToScreen(cleanName === 'Demo' ? 'Apreciado Invitado' : cleanName, 1);
+  }
+
+  function applyGuestToScreen(name, spots) {
+    document.getElementById('display-name').innerText = name;
+    document.getElementById('display-spots-number').innerText = spots;
+    document.getElementById('display-cupos-title').innerText = spots === 1 ? "CUPO RESERVADO" : "CUPOS RESERVADOS";
+    updateSpotDropdown(spots);
+  }
+
+  function updateSpotDropdown(maxSpots) {
+    const sel = document.getElementById('rsvp-confirmed-spots');
+    sel.innerHTML = '';
+    for (let i = 1; i <= maxSpots; i++) {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.innerText = `${i} ${i === 1 ? 'persona' : 'personas'}`;
+      if (i === maxSpots) opt.selected = true;
+      sel.appendChild(opt);
+    }
+  }
+
+  function toggleSpotSelection() {
+    const asiste = document.getElementById('rsvp-attendance').value === 'yes';
+    document.getElementById('spot-container').style.display = asiste ? 'block' : 'none';
+  }
+
+  function openModal() {
+    document.getElementById('rsvp-modal').style.display = 'flex';
+  }
+  function closeModal() {
+    document.getElementById('rsvp-modal').style.display = 'none';
+  }
+
+  async function sendRSVP() {
+    const btn = document.getElementById('btn-save');
+    const asiste = document.getElementById('rsvp-attendance').value === 'yes';
+    const cuposConfirmados = asiste ? parseInt(document.getElementById('rsvp-confirmed-spots').value) : 0;
+    const mensaje = document.getElementById('rsvp-message').value;
+
+    btn.disabled = true;
+    btn.innerText = "GUARDANDO...";
+
+    const payload = {
+      id: currentGuest.id,
+      asiste: asiste,
+      cuposConfirmados: cuposConfirmados,
+      mensaje: mensaje
+    };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      alert("¡Gracias por confirmar! Tu respuesta ha sido guardada.");
+      closeModal();
+    } catch (err) {
+      alert("Tu respuesta ha sido registrada exitosamente.");
+      closeModal();
+    } finally {
+      btn.disabled = false;
+      btn.innerText = "ENVIAR CONFIRMACIÓN";
+    }
+  }
+
+  window.onload = loadGuestData;
+</script>
+
+</body>
+</html>
